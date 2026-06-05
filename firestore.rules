@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Static validation helper for campaign participants
+    function isValidCertificateLog(data) {
+      return data.recipientName is string 
+          && data.recipientName.size() > 0 
+          && data.recipientName.size() <= 128
+          && data.certificateId is string
+          && data.certificateId.size() <= 64;
+    }
+
+    // Public logs of certificate generations
+    match /certificate_logs/{logId} {
+      allow read, create: if true;
+      allow update, delete: if true; // simple admin/client reset override
+    }
+
+    // Global counters for visitor count and page interactions
+    match /counters/global {
+      allow read, write: if true;
+    }
+  }
+}

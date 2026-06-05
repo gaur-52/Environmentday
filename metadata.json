@@ -1,0 +1,8 @@
+{
+  "name": "Remix: एक पेड़ लोकतंत्र के नाम - प्रमाण पत्र जनरेटर",
+  "description": "विश्व पर्यावरण दिवस पर निर्वाचन आयोग के स्वीप (SVEEP) कार्यक्रम के तहत \u0027एक पेड़ लोकतंत्र के नाम\u0027 प्रमाण पत्र जनरेटर और पीडीएफ डाउनलोडर।",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

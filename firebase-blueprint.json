@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "CertificateLog": {
+      "title": "Certificate Log",
+      "description": "Record of generated and downloaded voter SVEEP campaign certificates for environmental awareness",
+      "type": "object",
+      "properties": {
+        "recipientName": {
+          "type": "string",
+          "description": "Name of the voter / citizen"
+        },
+        "guardianName": {
+          "type": "string",
+          "description": "Name of father / husband"
+        },
+        "mobileNumber": {
+          "type": "string",
+          "description": "Mobile number of the citizen"
+        },
+        "assemblyConstituency": {
+          "type": "string",
+          "description": "Assembly electoral constituency name and code"
+        },
+        "block": {
+          "type": "string",
+          "description": "Block subdivision"
+        },
+        "district": {
+          "type": "string",
+          "description": "District name"
+        },
+        "certificateId": {
+          "type": "string",
+          "description": "Unique serial number of certificate"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the certificate page was generated and logged"
+        },
+        "format": {
+          "type": "string",
+          "description": "Export document format used (pdf / png / print)"
+        }
+      },
+      "required": ["recipientName", "certificateId", "timestamp"]
+    },
+    "GlobalCounter": {
+      "title": "Global Counter",
+      "description": "Dynamic interactions and click tracker",
+      "type": "object",
+      "properties": {
+        "pageCounter": {
+          "type": "integer",
+          "description": "Total live visitor hits and click interactions recorded"
+        }
+      },
+      "required": ["pageCounter"]
+    }
+  },
+  "firestore": {
+    "/certificate_logs/{logId}": {
+      "schema": "CertificateLog",
+      "description": "Collection storing all active certificates generated on record"
+    },
+    "/counters/global": {
+      "schema": "GlobalCounter",
+      "description": "Single document holding running global totals of clicks and page hits"
+    }
+  }
+}
